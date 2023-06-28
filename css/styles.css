@@ -1,0 +1,55 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+svg {
+  max-width: 50rem;
+  height: 100%;
+  display: block;
+}
+
+.image {
+  margin: 3em auto;
+}
+
+.title {
+  text-align: center;
+  font-size: 2.5rem;
+  background-color: black;
+  color: white;
+  padding: 0.25em;
+}
+
+path,
+polygon {
+  cursor: pointer;
+}
+
+.hover:hover > * {
+  fill: chartreuse;
+  transition: 0.2s all;
+}
+
+.selected {
+  fill: blue !important;
+}
+
+:focus {
+  outline: none !important;
+}
