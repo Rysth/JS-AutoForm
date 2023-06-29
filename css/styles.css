@@ -41,13 +41,23 @@ polygon {
   cursor: pointer;
 }
 
+.st0 {
+  fill: #ffffff;
+  stroke: #000000;
+  stroke-width: 5;
+}
+
 .hover:hover > * {
-  fill: chartreuse;
+  fill: blue;
   transition: 0.2s all;
 }
 
 .selected {
   fill: blue !important;
+}
+
+.unselected {
+  fill: greenyellow !important;
 }
 
 :focus {

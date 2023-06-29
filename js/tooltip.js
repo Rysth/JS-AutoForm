@@ -3,11 +3,19 @@ tippy('#posterior', {
 });
 
 tippy('#delantera', {
-  content: 'Parte Delantera del Vehículo',
+  content: 'Parachoque del Vehículo',
 });
 
 tippy('#capa-frontal', {
-  content: 'Parte Frontal del Vehículo',
+  content: 'Capó del Vehículo',
+});
+
+tippy('#espejo-frontal', {
+  content: 'Parabrisas del Vehiculo',
+});
+
+tippy('#espejo-trasero', {
+  content: 'Panel Trasero del Vehiculo',
 });
 
 tippy('#capa-trasera', {
