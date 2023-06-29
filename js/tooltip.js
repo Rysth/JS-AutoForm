@@ -31,6 +31,14 @@ tippy('#auto-izquierda', {
   placement: 'bottom',
 });
 
+tippy('#paneles-izquierda', {
+  content: 'Paneles Izquierdos',
+});
+
+tippy('#paneles-derecha', {
+  content: 'Paneles Derechos',
+});
+
 tippy('#ruedas-izquierda', {
   content: 'Ruedas Izquierdas',
   placement: 'left',

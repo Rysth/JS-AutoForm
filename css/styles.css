@@ -56,6 +56,15 @@ svg {
   font-size: 1rem;
 }
 
+.header-color {
+  outline: 1px solid black;
+}
+
+.header-white {
+  color: transparent;
+  background-color: white;
+}
+
 .header-blue {
   color: transparent;
   background-color: blue;
