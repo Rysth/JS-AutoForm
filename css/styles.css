@@ -96,6 +96,7 @@ image {
   text-align: center;
   font-weight: bold;
   font-style: italic;
+  pointer-events: none;
 }
 
 .form-check-label {

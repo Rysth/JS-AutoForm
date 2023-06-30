@@ -75,7 +75,7 @@ function createFieldset(part) {
 
   formSystem.innerHTML += `
     <fieldset class="form-fieldset ${part.slug}" disabled>
-      <legend class="fs-5 form-legend">${part.name}</legend>
+      <legend class="fs-5 form-legend text-secondary">${part.name}</legend>
       <div class="row px-3 text-center text-xl-start">
         ${componentsHtml}
       </div>
@@ -100,6 +100,7 @@ window.onload = () => {
       if (fieldset.classList.contains(ID)) {
         const isItemSelected = item.classList.contains('selected');
         fieldset.disabled = !isItemSelected;
+        fieldset.children[0].classList.toggle('text-secondary', !isItemSelected);
       }
     });
   }
