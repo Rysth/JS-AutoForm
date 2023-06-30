@@ -24,14 +24,15 @@ body {
   font-family: var(--FF-primary);
 }
 
-svg {
-  max-width: 50rem;
+svg,
+image {
+  max-width: 100%;
   height: 100%;
   display: block;
 }
 
 .container {
-  max-width: 1500px;
+  max-width: 1600px;
 }
 
 .image {
@@ -58,6 +59,7 @@ svg {
 .header-parragraph {
   font-weight: bold;
   font-size: 1rem;
+  margin: 0;
 }
 
 .header-color {
@@ -83,6 +85,7 @@ svg {
 .form-fieldset {
   border-radius: 8px;
   border: 1px solid black;
+  padding: 1em 0.5em;
 }
 
 .form-legend {
@@ -96,8 +99,8 @@ svg {
 }
 
 @media (min-width: 768px) {
-  .form-fieldset {
-    flex: 1;
+  .form-system {
+    grid-template-columns: 1fr 1fr;
   }
 
   .form-check-label {

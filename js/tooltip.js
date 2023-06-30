@@ -1,55 +1,29 @@
 tippy('#posterior', {
-  content: 'Parte Posterior del Vehículo',
+  content: 'Parachoque Trasero',
 });
 
 tippy('#delantera', {
-  content: 'Parachoque del Vehículo',
+  content: 'Parachoque Frontal',
 });
 
 tippy('#capa-frontal', {
-  content: 'Capó del Vehículo',
-});
-
-tippy('#espejo-frontal', {
-  content: 'Parabrisas del Vehiculo',
-});
-
-tippy('#espejo-trasero', {
-  content: 'Panel Trasero del Vehiculo',
+  content: 'Parte Frontal',
 });
 
 tippy('#capa-trasera', {
-  content: 'Parte Trasera del Vehículo',
+  content: 'Parte Trasera',
 });
 
 tippy('#capa-superior', {
-  content: 'Parte Superior del Vehículo',
+  content: 'Parte Superior',
 });
 
 tippy('#auto-izquierda', {
-  content: 'Parte Izquierda del Vehículo',
+  content: 'Lado Izquierdo',
   placement: 'bottom',
 });
 
-tippy('#paneles-izquierda', {
-  content: 'Paneles Izquierdos',
-});
-
-tippy('#paneles-derecha', {
-  content: 'Paneles Derechos',
-});
-
-tippy('#ruedas-izquierda', {
-  content: 'Ruedas Izquierdas',
-  placement: 'left',
-});
-
-tippy('#ruedas-derecha', {
-  content: 'Ruedas Derechas',
-  placement: 'right',
-});
-
 tippy('#auto-derecha', {
-  content: 'Parte Derecha del Vehículo',
+  content: 'Lado Derecho',
   placement: 'top',
 });
