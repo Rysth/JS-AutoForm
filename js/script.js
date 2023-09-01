@@ -25,14 +25,42 @@ function drop(event) {
     const x = event.clientX - rect.left - initialX;
     const y = event.clientY - rect.top - initialY;
 
-    // Check if a circle already exists in the desired position
-    const existingCircle = auto.querySelector(
-      `.status-circle.placed[data-status="${data}"]`,
-    );
+    // Clone the original circle
+    const newCircle = originalCircle.cloneNode(true);
 
-    if (existingCircle) {
-      auto.removeChild(existingCircle); // Remove the existing circle
-    }
+    // Calculate the new position within the boundaries of .auto
+    const maxX = rect.width - newCircle.offsetWidth;
+    const maxY = rect.height - newCircle.offsetHeight;
+
+    // Ensure the new position stays within the boundaries
+    const newX = Math.min(Math.max(0, x), maxX);
+    const newY = Math.min(Math.max(0, y), maxY);
+
+    // Set the position for the new circle
+    newCircle.classList.add('placed');
+    newCircle.style.left = `${newX}px`;
+    newCircle.style.top = `${newY}px`;
+
+    // Make the new circle draggable
+    newCircle.addEventListener('mousedown', startDrag);
+
+    // Append the new circle to the container
+    newCircle.ondragstart = moveActualCircle;
+    auto.appendChild(newCircle);
+  }
+}
+
+function moveActualCircle(event) {
+  event.preventDefault();
+  const data = event.dataTransfer.getData('text');
+  const originalCircle = document.querySelector(
+    `.status-circle.placed[data-status="${data}"]`,
+  );
+  if (originalCircle) {
+    const auto = document.querySelector('.auto');
+    const rect = auto.getBoundingClientRect();
+    const x = event.clientX - rect.left - initialX;
+    const y = event.clientY - rect.top - initialY;
 
     // Clone the original circle
     const newCircle = originalCircle.cloneNode(true);
@@ -54,6 +82,7 @@ function drop(event) {
     newCircle.addEventListener('mousedown', startDrag);
 
     // Append the new circle to the container
+    auto.removeChild(originalCircle); // Remove the existing circle
     auto.appendChild(newCircle);
   }
 }
