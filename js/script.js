@@ -1,3 +1,17 @@
+const createdCircles = [];
+
+const undoButton = document.getElementById('undoButton');
+undoButton.addEventListener('click', undoLastCircle);
+
+// Function to undo the last created circle
+function undoLastCircle() {
+  if (createdCircles.length > 0) {
+    const lastCircle = createdCircles.pop(); // Remove the last circle from the array
+    const auto = document.querySelector('.auto');
+    auto.removeChild(lastCircle); // Remove the circle from the container
+  }
+}
+
 const autoImage = document.querySelector('.auto-image');
 autoImage.ondragstart = () => {
   return false;
@@ -53,6 +67,8 @@ function drop(event) {
     // Append the new circle to the container
     newCircle.ondragstart = moveActualCircle;
     auto.appendChild(newCircle);
+
+    createdCircles.push(newCircle);
   }
 }
 
@@ -198,5 +214,6 @@ function createNewCircleInside(event) {
     // Append the new circle inside the original circle
     newCircle.ondragstart = moveActualCircle;
     auto.appendChild(newCircle);
+    createdCircles.push(newCircle);
   }
 }

@@ -31,6 +31,11 @@ image {
   display: block;
 }
 
+button {
+  font-family: var(--FF-primary);
+  cursor: pointer;
+}
+
 .container {
   width: 90%;
   max-width: 1400px;
@@ -52,27 +57,54 @@ image {
 }
 
 .content {
-  margin: 4em 0;
+  margin: 1em 0;
   display: grid;
   justify-content: center;
+}
+
+.content-text {
+  font-size: 0.9rem;
+  margin: 1em 0;
+  line-height: 1.1;
+}
+
+.content-text.title {
+  text-align: center;
+}
+
+.content-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  padding: 1em 0;
+}
+
+.content-button {
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 0.25em;
+  width: 6em;
+  padding: 0.35em 0;
 }
 
 .auto {
   position: relative;
   display: grid;
   overflow: auto;
+  border: 1px solid black;
 }
 
 .auto-image {
   margin: 0 auto;
   width: 100%;
-  border: 1px solid black;
   padding: 1em;
 }
 
 .status-circle {
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   display: inline-block;
   border-radius: 50%;
   margin-right: 10px; /* Add spacing between circles */
@@ -97,9 +129,22 @@ image {
   background-color: green;
 }
 
+.content-button.delete {
+  background-color: red;
+  color: white;
+}
+
 @media (min-width: 768px) {
   .header-image {
     width: 28em;
+  }
+
+  .content-text {
+    font-size: 1rem;
+  }
+
+  .auto {
+    width: 25em;
   }
 
   .status-circle {
@@ -115,5 +160,13 @@ image {
   .status-circle:active {
     transform: scale(1);
     opacity: 0.5;
+  }
+
+  .content-button {
+    transition: background-color 0.1s;
+  }
+
+  .content-button:hover {
+    background-color: black;
   }
 }
