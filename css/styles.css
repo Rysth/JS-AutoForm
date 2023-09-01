@@ -183,3 +183,8 @@ button {
     transform: scale(0.9);
   }
 }
+
+/* CSS */
+.prevent-scroll {
+  overflow: hidden;
+}

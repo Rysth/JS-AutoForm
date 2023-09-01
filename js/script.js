@@ -16,14 +16,6 @@ function undoLastCircle() {
   }
 }
 
-// Get the element with the class "auto-image"
-const autoImage = document.querySelector('.auto-image');
-
-// Prevent the drag and drop behavior for this element
-autoImage.ondragstart = () => {
-  return false;
-};
-
 // Function to prevent the default behavior for dragover
 function allowDrop(event) {
   event.preventDefault();
@@ -128,6 +120,11 @@ let initialX, initialY;
 let activeCircle = null;
 let offsetX, offsetY;
 
+// Function to prevent touchmove on the document during circle drag
+function preventDocumentTouchMove(event) {
+  event.preventDefault();
+}
+
 // Function to start dragging
 function startDrag(event) {
   activeCircle = event.target;
@@ -136,6 +133,9 @@ function startDrag(event) {
 
   document.addEventListener('mousemove', dragCircle);
   document.addEventListener('mouseup', stopDrag);
+
+  // Add class to body to prevent scrolling
+  document.body.classList.add('prevent-scroll');
 }
 
 // Function to start dragging on touch devices
@@ -147,6 +147,9 @@ function startDragTouch(event) {
 
   document.addEventListener('touchmove', dragCircleTouch);
   document.addEventListener('touchend', stopDragTouch);
+
+  // Add class to body to prevent scrolling
+  document.body.classList.add('prevent-scroll');
 }
 
 // Function to drag the circle
@@ -193,6 +196,9 @@ function stopDrag() {
   activeCircle = null;
   document.removeEventListener('mousemove', dragCircle);
   document.removeEventListener('mouseup', stopDrag);
+
+  // Remove class from body to allow scrolling
+  document.body.classList.remove('prevent-scroll');
 }
 
 // Function to stop dragging on touch devices
@@ -200,20 +206,10 @@ function stopDragTouch() {
   activeCircle = null;
   document.removeEventListener('touchmove', dragCircleTouch);
   document.removeEventListener('touchend', stopDragTouch);
+
+  // Remove class from body to allow scrolling
+  document.body.classList.remove('prevent-scroll');
 }
-
-// Get the element with the class "auto"
-const auto = document.querySelector('.auto');
-
-// Prevent the drag and drop behavior for this element
-auto.ondragstart = () => {
-  return false;
-};
-
-// Add an event listener to prevent the default touchmove behavior
-auto.addEventListener('touchmove', function (e) {
-  e.preventDefault();
-});
 
 // Check if the device is mobile
 const isMobileDevice = window.innerWidth < 768;
