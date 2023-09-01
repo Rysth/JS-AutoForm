@@ -60,11 +60,12 @@ image {
 .auto {
   position: relative;
   display: grid;
+  overflow: auto;
 }
 
 .auto-image {
   margin: 0 auto;
-  width: 100%;
+  width: 30em;
   border: 1px solid black;
   padding: 1em;
 }
@@ -101,11 +102,7 @@ image {
   }
 
   .status-circle {
-    width: 45px;
-    height: 45px;
-  }
-
-  .auto-image {
-    width: 30em;
+    width: 40px;
+    height: 40px;
   }
 }

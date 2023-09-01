@@ -43,7 +43,7 @@ function drop(event) {
 
     // Make the new circle draggable
     newCircle.addEventListener('mousedown', startDrag);
-    newCircle.addEventListener('touchstart', startDragTouch);
+    newCircle.addEventListener('touchstart', startDragTouch, { passive: true });
 
     // Append the new circle to the container
     newCircle.ondragstart = moveActualCircle;
@@ -81,7 +81,7 @@ function moveActualCircle(event) {
 
     // Make the new circle draggable
     newCircle.addEventListener('mousedown', startDrag);
-    newCircle.addEventListener('touchstart', startDragTouch);
+    newCircle.addEventListener('touchstart', startDragTouch, { passive: true });
 
     // Append the new circle to the container
     auto.removeChild(originalCircle); // Remove the existing circle
@@ -161,8 +161,37 @@ function stopDragTouch() {
   document.removeEventListener('touchend', stopDragTouch);
 }
 
+const isMobileDevice = window.innerWidth < 768;
+
 // Add event listeners to make the circles draggable on both desktop and mobile
 document.querySelectorAll('.status-circle[data-status]').forEach((circle) => {
   circle.addEventListener('mousedown', startDrag);
-  circle.addEventListener('touchstart', startDragTouch);
+  circle.addEventListener('touchstart', startDragTouch, { passive: true });
+
+  if (isMobileDevice) {
+    circle.addEventListener('click', createNewCircleInside);
+  }
 });
+
+function createNewCircleInside(event) {
+  if (isMobileDevice) {
+    const originalCircle = event.target;
+    const auto = document.querySelector('.auto');
+
+    // Create a new circle element
+    const newCircle = originalCircle.cloneNode(true);
+
+    // Set a default size and position inside the original circle
+    newCircle.classList.add('placed');
+    newCircle.style.left = '10px'; // Adjust the initial position as needed
+    newCircle.style.top = '10px';
+
+    // Make the new circle draggable
+    newCircle.addEventListener('mousedown', startDrag);
+    newCircle.addEventListener('touchstart', startDragTouch, { passive: true });
+
+    // Append the new circle inside the original circle
+    newCircle.ondragstart = moveActualCircle;
+    auto.appendChild(newCircle);
+  }
+}
