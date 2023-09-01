@@ -120,8 +120,8 @@ let initialX, initialY;
 let activeCircle = null;
 let offsetX, offsetY;
 
-// Function to prevent touchmove on the document during circle drag
-function preventDocumentTouchMove(event) {
+// Function to prevent touchmove on the window during circle drag
+function preventWindowTouchMove(event) {
   event.preventDefault();
 }
 
@@ -134,8 +134,10 @@ function startDrag(event) {
   document.addEventListener('mousemove', dragCircle);
   document.addEventListener('mouseup', stopDrag);
 
-  // Add class to body to prevent scrolling
-  document.body.classList.add('prevent-scroll');
+  // Disable touchmove on the window to prevent scrolling
+  window.addEventListener('touchmove', preventWindowTouchMove, {
+    passive: false,
+  });
 }
 
 // Function to start dragging on touch devices
@@ -148,8 +150,10 @@ function startDragTouch(event) {
   document.addEventListener('touchmove', dragCircleTouch);
   document.addEventListener('touchend', stopDragTouch);
 
-  // Add class to body to prevent scrolling
-  document.body.classList.add('prevent-scroll');
+  // Disable touchmove on the window to prevent scrolling
+  window.addEventListener('touchmove', preventWindowTouchMove, {
+    passive: false,
+  });
 }
 
 // Function to drag the circle
@@ -197,8 +201,8 @@ function stopDrag() {
   document.removeEventListener('mousemove', dragCircle);
   document.removeEventListener('mouseup', stopDrag);
 
-  // Remove class from body to allow scrolling
-  document.body.classList.remove('prevent-scroll');
+  // Remove the touchmove event listener from the window
+  window.removeEventListener('touchmove', preventWindowTouchMove);
 }
 
 // Function to stop dragging on touch devices
@@ -207,8 +211,8 @@ function stopDragTouch() {
   document.removeEventListener('touchmove', dragCircleTouch);
   document.removeEventListener('touchend', stopDragTouch);
 
-  // Remove class from body to allow scrolling
-  document.body.classList.remove('prevent-scroll');
+  // Remove the touchmove event listener from the window
+  window.removeEventListener('touchmove', preventWindowTouchMove);
 }
 
 // Check if the device is mobile
