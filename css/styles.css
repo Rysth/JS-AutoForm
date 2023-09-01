@@ -78,6 +78,7 @@ button {
   justify-content: flex-end;
   flex-wrap: wrap;
   padding: 1em 0;
+  gap: 0.5em;
 }
 
 .content-button {
@@ -85,8 +86,18 @@ button {
   font-weight: bold;
   border: none;
   border-radius: 0.25em;
-  width: 6em;
+  width: 8em;
   padding: 0.35em 0;
+}
+
+.content-button.delete {
+  background-color: red;
+  color: white;
+}
+
+.content-button.download {
+  background-color: green;
+  color: white;
 }
 
 .auto {
@@ -100,6 +111,7 @@ button {
   margin: 0 auto;
   width: 100%;
   padding: 1em;
+  object-fit: cover;
 }
 
 .status-circle {
@@ -127,11 +139,6 @@ button {
 
 .green-status {
   background-color: green;
-}
-
-.content-button.delete {
-  background-color: red;
-  color: white;
 }
 
 @media (min-width: 768px) {
@@ -163,10 +170,14 @@ button {
   }
 
   .content-button {
-    transition: background-color 0.1s;
+    transition: background-color 0.1s, transform 0.1s;
   }
 
   .content-button:hover {
     background-color: black;
+  }
+
+  .content-button:active {
+    transform: scale(0.9);
   }
 }

@@ -1,6 +1,10 @@
+// Array to store created circles
 const createdCircles = [];
 
+// Get the "Undo" button element by its ID
 const undoButton = document.getElementById('undoButton');
+
+// Add a click event listener to the "Undo" button
 undoButton.addEventListener('click', undoLastCircle);
 
 // Function to undo the last created circle
@@ -12,15 +16,20 @@ function undoLastCircle() {
   }
 }
 
+// Get the element with the class "auto-image"
 const autoImage = document.querySelector('.auto-image');
+
+// Prevent the drag and drop behavior for this element
 autoImage.ondragstart = () => {
   return false;
 };
 
+// Function to prevent the default behavior for dragover
 function allowDrop(event) {
   event.preventDefault();
 }
 
+// Function to handle the drag start event
 function dragStart(event) {
   const circle = event.target;
   initialX = event.clientX - circle.getBoundingClientRect().left;
@@ -28,10 +37,12 @@ function dragStart(event) {
   event.dataTransfer.setData('text', circle.dataset.status);
 }
 
+// Function to handle the drag over event
 function dragOver(event) {
   event.preventDefault();
 }
 
+// Function to handle the drop event
 function drop(event) {
   event.preventDefault();
   const data = event.dataTransfer.getData('text');
@@ -68,10 +79,12 @@ function drop(event) {
     newCircle.ondragstart = moveActualCircle;
     auto.appendChild(newCircle);
 
+    // Add the newly created circle to the array
     createdCircles.push(newCircle);
   }
 }
 
+// Function to move the actual circle
 function moveActualCircle(event) {
   event.preventDefault();
   const data = event.dataTransfer.getData('text');
@@ -110,10 +123,12 @@ function moveActualCircle(event) {
   }
 }
 
+// Variables to store initial values
 let initialX, initialY;
 let activeCircle = null;
 let offsetX, offsetY;
 
+// Function to start dragging
 function startDrag(event) {
   activeCircle = event.target;
   offsetX = event.clientX - activeCircle.getBoundingClientRect().left;
@@ -123,6 +138,7 @@ function startDrag(event) {
   document.addEventListener('mouseup', stopDrag);
 }
 
+// Function to start dragging on touch devices
 function startDragTouch(event) {
   activeCircle = event.target;
   const touch = event.touches[0];
@@ -133,6 +149,7 @@ function startDragTouch(event) {
   document.addEventListener('touchend', stopDragTouch);
 }
 
+// Function to drag the circle
 function dragCircle(event) {
   if (!activeCircle) return;
 
@@ -151,6 +168,7 @@ function dragCircle(event) {
   activeCircle.style.top = `${newY}px`;
 }
 
+// Function to drag the circle on touch devices
 function dragCircleTouch(event) {
   if (!activeCircle) return;
 
@@ -170,18 +188,21 @@ function dragCircleTouch(event) {
   activeCircle.style.top = `${newY}px`;
 }
 
+// Function to stop dragging
 function stopDrag() {
   activeCircle = null;
   document.removeEventListener('mousemove', dragCircle);
   document.removeEventListener('mouseup', stopDrag);
 }
 
+// Function to stop dragging on touch devices
 function stopDragTouch() {
   activeCircle = null;
   document.removeEventListener('touchmove', dragCircleTouch);
   document.removeEventListener('touchend', stopDragTouch);
 }
 
+// Check if the device is mobile
 const isMobileDevice = window.innerWidth < 768;
 
 // Add event listeners to make the circles draggable on both desktop and mobile
@@ -194,6 +215,7 @@ document.querySelectorAll('.status-circle[data-status]').forEach((circle) => {
   }
 });
 
+// Function to create a new circle inside another circle
 function createNewCircleInside(event) {
   if (isMobileDevice) {
     const originalCircle = event.target;
@@ -214,6 +236,8 @@ function createNewCircleInside(event) {
     // Append the new circle inside the original circle
     newCircle.ondragstart = moveActualCircle;
     auto.appendChild(newCircle);
+
+    // Add the newly created circle to the array
     createdCircles.push(newCircle);
   }
 }
