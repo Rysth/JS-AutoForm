@@ -34,6 +34,7 @@
               Presiona o Arrastra un círculo para empezar
             </h2>
           </header>
+
           <div class="status-container">
             <div
               class="status-circle red-status"
@@ -54,6 +55,7 @@
               ondragstart="dragStart(event)"
             ></div>
           </div>
+
           <div class="auto" id="auto-picture">
             <img
               class="auto-image"
@@ -63,6 +65,17 @@
               ondragover="dragOver(event)"
               ondrop="drop(event)"
             />
+          </div>
+          <div class="content-description">
+            <p class="content-text tag">
+              <span class="red">Valor</span> = Roto
+            </p>
+            <p class="content-text tag">
+              <span class="orange">Valor</span> = Golpe
+            </p>
+            <p class="content-text tag">
+              <span class="green">Valor</span> = Rayas
+            </p>
           </div>
           <div class="content-actions">
             <button class="content-button delete" id="undoButton">

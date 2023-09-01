@@ -72,6 +72,31 @@ button {
   text-align: center;
 }
 
+.content-description {
+  display: flex;
+  margin: 0 auto;
+  gap: 1em;
+}
+
+.content-text.tag {
+  font-weight: bold;
+}
+
+.red {
+  color: red;
+  background-color: red;
+}
+
+.orange {
+  color: orange;
+  background-color: orange;
+}
+
+.green {
+  color: green;
+  background-color: green;
+}
+
 .content-actions {
   display: flex;
   align-items: center;
@@ -82,22 +107,21 @@ button {
 }
 
 .content-button {
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: bold;
   border: none;
   border-radius: 0.25em;
   width: 8em;
   padding: 0.35em 0;
+  color: white;
 }
 
 .content-button.delete {
-  background-color: red;
-  color: white;
+  background-color: blue;
 }
 
 .content-button.download {
   background-color: green;
-  color: white;
 }
 
 .auto {
@@ -117,8 +141,8 @@ button {
 }
 
 .status-circle {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   display: inline-block;
   border-radius: 50%;
   margin-right: 10px; /* Add spacing between circles */
