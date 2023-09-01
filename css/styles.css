@@ -103,8 +103,10 @@ button {
 .auto {
   position: relative;
   display: grid;
-  overflow: auto;
+  overflow: hidden;
   border: 1px solid black;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .auto-image {
