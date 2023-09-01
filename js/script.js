@@ -202,6 +202,19 @@ function stopDragTouch() {
   document.removeEventListener('touchend', stopDragTouch);
 }
 
+// Get the element with the class "auto"
+const auto = document.querySelector('.auto');
+
+// Prevent the drag and drop behavior for this element
+auto.ondragstart = () => {
+  return false;
+};
+
+// Add an event listener to prevent the default touchmove behavior
+auto.addEventListener('touchmove', function (e) {
+  e.preventDefault();
+});
+
 // Check if the device is mobile
 const isMobileDevice = window.innerWidth < 768;
 
