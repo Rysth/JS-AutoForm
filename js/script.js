@@ -29,20 +29,27 @@ function dragStart(event) {
 function dragOver(event) {
   event.preventDefault();
 }
-
 function drop(event) {
   event.preventDefault();
   const data = event.dataTransfer.getData('text');
-  const circle = document.querySelector(
+  const originalCircle = document.querySelector(
     `.status-circle[data-status="${data}"]`,
   );
-  if (circle) {
+  if (originalCircle) {
     const auto = document.querySelector('.auto');
     const rect = auto.getBoundingClientRect();
     const x = event.clientX - rect.left - initialX;
     const y = event.clientY - rect.top - initialY;
-    circle.style.left = `${x}px`;
-    circle.style.top = `${y}px`;
-    auto.appendChild(circle);
+
+    // Clone the original circle
+    const newCircle = originalCircle.cloneNode(true);
+    newCircle.classList.add('placed');
+
+    // Set the position for the new circle
+    newCircle.style.left = `${x}px`;
+    newCircle.style.top = `${y}px`;
+
+    // Append the new circle to the container
+    auto.appendChild(newCircle);
   }
 }
