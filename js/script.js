@@ -120,11 +120,6 @@ let initialX, initialY;
 let activeCircle = null;
 let offsetX, offsetY;
 
-// Function to prevent touchmove on the window during circle drag
-function preventWindowTouchMove(event) {
-  event.preventDefault();
-}
-
 // Function to start dragging
 function startDrag(event) {
   activeCircle = event.target;
@@ -134,10 +129,8 @@ function startDrag(event) {
   document.addEventListener('mousemove', dragCircle);
   document.addEventListener('mouseup', stopDrag);
 
-  // Disable touchmove on the window to prevent scrolling
-  window.addEventListener('touchmove', preventWindowTouchMove, {
-    passive: false,
-  });
+  // Add class to the active circle to prevent scrolling
+  activeCircle.classList.add('prevent-scroll');
 }
 
 // Function to start dragging on touch devices
@@ -150,10 +143,8 @@ function startDragTouch(event) {
   document.addEventListener('touchmove', dragCircleTouch);
   document.addEventListener('touchend', stopDragTouch);
 
-  // Disable touchmove on the window to prevent scrolling
-  window.addEventListener('touchmove', preventWindowTouchMove, {
-    passive: false,
-  });
+  // Add class to the active circle to prevent scrolling
+  activeCircle.classList.add('prevent-scroll');
 }
 
 // Function to drag the circle
@@ -201,8 +192,10 @@ function stopDrag() {
   document.removeEventListener('mousemove', dragCircle);
   document.removeEventListener('mouseup', stopDrag);
 
-  // Remove the touchmove event listener from the window
-  window.removeEventListener('touchmove', preventWindowTouchMove);
+  // Remove the prevent-scroll class from the active circle
+  if (activeCircle) {
+    activeCircle.classList.remove('prevent-scroll');
+  }
 }
 
 // Function to stop dragging on touch devices
@@ -211,8 +204,10 @@ function stopDragTouch() {
   document.removeEventListener('touchmove', dragCircleTouch);
   document.removeEventListener('touchend', stopDragTouch);
 
-  // Remove the touchmove event listener from the window
-  window.removeEventListener('touchmove', preventWindowTouchMove);
+  // Remove the prevent-scroll class from the active circle
+  if (activeCircle) {
+    activeCircle.classList.remove('prevent-scroll');
+  }
 }
 
 // Check if the device is mobile
