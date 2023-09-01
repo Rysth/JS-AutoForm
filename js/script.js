@@ -1,3 +1,8 @@
+const autoImage = document.querySelector('.auto-image');
+autoImage.ondragstart = () => {
+  return false;
+};
+
 function allowDrop(event) {
   event.preventDefault();
 }

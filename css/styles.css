@@ -65,7 +65,7 @@ image {
 
 .auto-image {
   margin: 0 auto;
-  width: 30em;
+  width: 100%;
   border: 1px solid black;
   padding: 1em;
 }
@@ -78,22 +78,23 @@ image {
   margin-right: 10px; /* Add spacing between circles */
   cursor: move;
   z-index: 1000;
+  outline: 1px solid black;
 }
 
 .status-circle.placed {
   position: absolute;
 }
 
-.blue-status {
-  background-color: blue;
+.red-status {
+  background-color: red;
+}
+
+.orange-status {
+  background-color: orange;
 }
 
 .green-status {
   background-color: green;
-}
-
-.yellow-status {
-  background-color: yellow;
 }
 
 @media (min-width: 768px) {
@@ -102,7 +103,17 @@ image {
   }
 
   .status-circle {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
+    transition: transform 0.15s;
+  }
+
+  .status-circle:hover {
+    transform: scale(1.1);
+  }
+
+  .status-circle:active {
+    transform: scale(1);
+    opacity: 0.5;
   }
 }

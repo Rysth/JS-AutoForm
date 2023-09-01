@@ -24,21 +24,21 @@
         <div class="content">
           <div class="status-container">
             <div
-              class="status-circle blue-status"
+              class="status-circle red-status"
               draggable="true"
-              data-status="Blue"
+              data-status="Red"
+              ondragstart="dragStart(event)"
+            ></div>
+            <div
+              class="status-circle orange-status"
+              draggable="true"
+              data-status="Orange"
               ondragstart="dragStart(event)"
             ></div>
             <div
               class="status-circle green-status"
               draggable="true"
               data-status="Green"
-              ondragstart="dragStart(event)"
-            ></div>
-            <div
-              class="status-circle yellow-status"
-              draggable="true"
-              data-status="Yellow"
               ondragstart="dragStart(event)"
             ></div>
           </div>
