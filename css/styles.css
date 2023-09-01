@@ -64,7 +64,7 @@ image {
 
 .auto-image {
   margin: 0 auto;
-  width: 30em;
+  width: 100%;
   border: 1px solid black;
   padding: 1em;
 }
