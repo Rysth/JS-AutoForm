@@ -69,7 +69,7 @@ function createFieldset(part) {
             ${element}
           </label>
         </div>
-    `
+    `,
     )
     .join('');
 
@@ -100,7 +100,10 @@ window.onload = () => {
       if (fieldset.classList.contains(ID)) {
         const isItemSelected = item.classList.contains('selected');
         fieldset.disabled = !isItemSelected;
-        fieldset.children[0].classList.toggle('text-secondary', !isItemSelected);
+        fieldset.children[0].classList.toggle(
+          'text-secondary',
+          !isItemSelected,
+        );
       }
     });
   }
@@ -125,7 +128,9 @@ submitButton.addEventListener('click', function (event) {
   // Iterate over each vehicle part
   vehicleParts.forEach((part) => {
     // Retrieve all checkbox inputs for the current vehicle part
-    const checkboxes = form.querySelectorAll(`input.${part.slug}[type="checkbox"]`);
+    const checkboxes = form.querySelectorAll(
+      `input.${part.slug}[type="checkbox"]`,
+    );
 
     // Array to store selected checkboxes for the current vehicle part
     const partSelectedCheckboxes = [];

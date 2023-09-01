@@ -32,115 +32,62 @@ image {
 }
 
 .container {
-  max-width: 1600px;
-}
-
-.image {
+  width: 90%;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
-.logo {
-  max-width: 20em;
+/* Header */
+.header {
+  padding: 1em 0;
 }
 
-.header-title {
-  text-align: center;
-  font-size: 2.5rem;
-  background-color: black;
-  color: white;
-  padding: 0.25em;
+.header-content {
+  display: grid;
+  place-items: center;
 }
 
-.header-system {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2em;
-  flex-wrap: wrap;
+.header-image {
+  width: 18em;
+}
+
+.auto {
+  position: relative;
+  display: grid;
+  margin: 4em 0;
+}
+
+.auto-image {
+  margin: 0 auto;
+  max-width: 30em;
+  border: 1px solid black;
   padding: 1em;
 }
 
-.header-parragraph {
-  font-weight: bold;
-  font-size: 1rem;
-  margin: 0;
+@media (min-width: 768px) {
+  .header-image {
+    width: 28em;
+  }
 }
 
-.header-color {
-  outline: 1px solid black;
+.status-circle {
+  width: 45px;
+  height: 45px;
+  position: absolute;
+  border-radius: 50%;
+  margin-right: 10px; /* Add spacing between circles */
+  cursor: move;
+  z-index: 1000;
 }
 
-.header-white {
-  color: transparent;
-  background-color: white;
-}
-
-.header-blue {
-  color: transparent;
+.blue-status {
   background-color: blue;
 }
 
-.header-green {
-  color: rgb(17, 224, 17);
-  background-color: rgb(17, 224, 17);
+.green-status {
+  background-color: green;
 }
 
-/* Form */
-.form-fieldset {
-  border-radius: 8px;
-  border: 1px solid black;
-  padding: 1em 0.5em;
-}
-
-.form-legend {
-  text-align: center;
-  font-weight: bold;
-  font-style: italic;
-  pointer-events: none;
-}
-
-.form-check-label {
-  font-size: 1rem;
-}
-
-@media (min-width: 768px) {
-  .logo {
-    max-width: 30em;
-  }
-
-  .form-system {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .form-check-label {
-    font-size: 0.8rem;
-  }
-}
-
-path,
-polygon {
-  cursor: pointer;
-}
-
-.st0 {
-  fill: #ffffff;
-  stroke: #000000;
-  stroke-width: 5;
-}
-
-.hover:hover > * {
-  fill: blue;
-  transition: 0.2s all;
-}
-
-.selected {
-  fill: blue !important;
-}
-
-.unselected {
-  fill: rgb(17, 224, 17) !important;
-}
-
-:focus {
-  outline: none !important;
+.yellow-status {
+  background-color: yellow;
 }
