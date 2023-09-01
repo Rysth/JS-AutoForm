@@ -43,6 +43,7 @@ function drop(event) {
 
     // Make the new circle draggable
     newCircle.addEventListener('mousedown', startDrag);
+    newCircle.addEventListener('touchstart', startDragTouch);
 
     // Append the new circle to the container
     newCircle.ondragstart = moveActualCircle;
@@ -80,6 +81,7 @@ function moveActualCircle(event) {
 
     // Make the new circle draggable
     newCircle.addEventListener('mousedown', startDrag);
+    newCircle.addEventListener('touchstart', startDragTouch);
 
     // Append the new circle to the container
     auto.removeChild(originalCircle); // Remove the existing circle
@@ -100,6 +102,16 @@ function startDrag(event) {
   document.addEventListener('mouseup', stopDrag);
 }
 
+function startDragTouch(event) {
+  activeCircle = event.target;
+  const touch = event.touches[0];
+  offsetX = touch.clientX - activeCircle.getBoundingClientRect().left;
+  offsetY = touch.clientY - activeCircle.getBoundingClientRect().top;
+
+  document.addEventListener('touchmove', dragCircleTouch);
+  document.addEventListener('touchend', stopDragTouch);
+}
+
 function dragCircle(event) {
   if (!activeCircle) return;
 
@@ -118,13 +130,39 @@ function dragCircle(event) {
   activeCircle.style.top = `${newY}px`;
 }
 
+function dragCircleTouch(event) {
+  if (!activeCircle) return;
+
+  const auto = document.querySelector('.auto');
+  const rect = auto.getBoundingClientRect();
+  const touch = event.touches[0];
+  const x = touch.clientX - rect.left - offsetX;
+  const y = touch.clientY - rect.top - offsetY;
+
+  const maxX = rect.width - activeCircle.offsetWidth;
+  const maxY = rect.height - activeCircle.offsetHeight;
+
+  const newX = Math.min(Math.max(0, x), maxX);
+  const newY = Math.min(Math.max(0, y), maxY);
+
+  activeCircle.style.left = `${newX}px`;
+  activeCircle.style.top = `${newY}px`;
+}
+
 function stopDrag() {
   activeCircle = null;
   document.removeEventListener('mousemove', dragCircle);
   document.removeEventListener('mouseup', stopDrag);
 }
 
-// Add event listeners to make the circles draggable only once
+function stopDragTouch() {
+  activeCircle = null;
+  document.removeEventListener('touchmove', dragCircleTouch);
+  document.removeEventListener('touchend', stopDragTouch);
+}
+
+// Add event listeners to make the circles draggable on both desktop and mobile
 document.querySelectorAll('.status-circle[data-status]').forEach((circle) => {
   circle.addEventListener('mousedown', startDrag);
+  circle.addEventListener('touchstart', startDragTouch);
 });
